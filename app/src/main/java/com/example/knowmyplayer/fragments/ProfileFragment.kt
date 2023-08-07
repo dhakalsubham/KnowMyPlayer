@@ -2,18 +2,15 @@ package com.example.knowmyplayer.fragments
 
 import android.os.Build
 import android.os.Bundle
-import android.view.Gravity
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.activityViewModels
-import com.example.knowmyplayer.MainActivityViewModel
+import com.example.knowmyplayer.feature.dashboard.MainActivityViewModel
 import com.example.knowmyplayer.R
 import com.example.knowmyplayer.databinding.FragmentProfileBinding
+import com.example.knowmyplayer.remote.NetworkUtils
 import com.example.knowmyplayer.utils.convertDOBToAge
-
 
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
@@ -26,18 +23,34 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         binding = FragmentProfileBinding.bind(view)
         viewModel.playerStats.observe(viewLifecycleOwner) {
 
-            it?.let { it1 ->
-                binding.labelAndFieldPosition.setValue(it1.strPosition)
-                binding.labelAndFieldHeight.setValue(it1.strHeight)
-                binding.labelAndFieldWeight.setValue(it1.strWeight)
-                binding.labelAndFieldAge.setValue(it1.dateBorn.convertDOBToAge())
-                binding.labelAndFieldTeam.setValue(it1.strTeam)
-                binding.labelAndFieldNumber.setValue(it1.strNumber)
-                binding.labelAndFieldAgent.setValue(it1.strAgent)
-                binding.labelAndFieldWage.setValue(it1.strWage)
-                binding.labelAndFieldKit.setValue(it1.strKit)
-            }
+            when (it) {
+                is NetworkUtils.Error -> {
+                }
 
+                is NetworkUtils.Loading -> {
+                }
+
+                is NetworkUtils.Success -> {
+                    it.data?.let { playerResponse ->
+                        if (playerResponse.player.isNullOrEmpty()) {
+                        } else {
+                            with(playerResponse.player[0]) {
+                                binding.labelAndFieldPosition.setValue(strPosition)
+                                binding.labelAndFieldHeight.setValue(strHeight)
+                                binding.labelAndFieldWeight.setValue(strWeight)
+                                binding.labelAndFieldAge.setValue(dateBorn.convertDOBToAge())
+                                binding.labelAndFieldTeam.setValue(strTeam)
+                                binding.labelAndFieldNumber.setValue(strNumber)
+                                binding.labelAndFieldAgent.setValue(strAgent)
+                                binding.labelAndFieldWage.setValue(strWage)
+                                binding.labelAndFieldKit.setValue(strKit)
+                            }
+                        }
+
+                    }
+
+                }
+            }
         }
 
     }

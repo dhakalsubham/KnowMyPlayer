@@ -1,4 +1,4 @@
-package com.example.knowmyplayer
+package com.example.knowmyplayer.feature.dashboard
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity

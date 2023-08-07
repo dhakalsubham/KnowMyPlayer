@@ -1,16 +1,14 @@
-package com.example.knowmyplayer
+package com.example.knowmyplayer.feature.dashboard
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.knowmyplayer.model.Player
 import com.example.knowmyplayer.model.PlayerResponse
+import com.example.knowmyplayer.remote.NetworkUtils
 import com.example.knowmyplayer.repository.PlayerStatsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 /**
@@ -22,25 +20,13 @@ import kotlinx.coroutines.launch
 class MainActivityViewModel
 @Inject constructor(private val repository: PlayerStatsRepository) : ViewModel() {
 
-    val playerStats = MutableLiveData<Player?>()
-
-    init {
-        viewModelScope.launch {
-            try {
-                getPlayerStatsByName("LeBron James")
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        }
-    }
+    private val _playerStats = MutableLiveData<NetworkUtils<PlayerResponse>>()
+    val playerStats: LiveData<NetworkUtils<PlayerResponse>> = _playerStats
 
     suspend fun getPlayerStatsByName(name: String) {
         viewModelScope.launch {
-            var res = repository.getPlayerStatsByName(name)
-            if (res.player.isNotEmpty()) {
-                playerStats.postValue(res.player[0])
-            }
-
+            _playerStats.postValue(NetworkUtils.Loading())
+            _playerStats.postValue(repository.getPlayerStatsByName(name))
         }
 
     }

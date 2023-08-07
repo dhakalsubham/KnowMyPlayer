@@ -4,7 +4,6 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.Gravity
 import android.view.LayoutInflater
-import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.example.knowmyplayer.R
 import com.example.knowmyplayer.databinding.KLabelAndValueFieldBinding
@@ -42,7 +41,7 @@ class KLabelAndValueField : LinearLayout {
         }
     }
 
-    fun setValue(value: String) {
+    fun setValue(value: String?) {
         binding.textViewValue.text = value
     }
 

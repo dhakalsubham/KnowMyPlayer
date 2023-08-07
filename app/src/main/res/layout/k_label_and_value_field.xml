@@ -22,7 +22,8 @@
             android:id="@+id/text_view_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
+            android:textColor="@color/gray_text"
+            android:textStyle="bold"
             tools:text="Position" />
 
     </LinearLayout>

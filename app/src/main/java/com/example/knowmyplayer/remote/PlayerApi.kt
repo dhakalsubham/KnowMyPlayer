@@ -1,6 +1,7 @@
 package com.example.knowmyplayer.remote
 
 import com.example.knowmyplayer.model.PlayerResponse
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -11,5 +12,5 @@ import retrofit2.http.Query
  */
 interface PlayerApi {
     @GET("searchplayers.php")
-    suspend fun getPlayerStatsByName(@Query("p") name: String): PlayerResponse
+    suspend fun getPlayerStatsByName(@Query("p") name: String): Response<PlayerResponse>
 }

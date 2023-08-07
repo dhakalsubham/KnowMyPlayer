@@ -3,6 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -72,4 +73,8 @@ dependencies {
 
     //view-pager
     implementation ("androidx.viewpager2:viewpager2:1.0.0-alpha04")
+
+    //firebase
+    implementation(platform("com.google.firebase:firebase-bom:32.2.2"))
+    implementation("com.google.firebase:firebase-analytics-ktx")
 }

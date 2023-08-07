@@ -3,7 +3,6 @@ package com.example.knowmyplayer.di
 import com.example.knowmyplayer.constants.AppConstants
 import com.example.knowmyplayer.remote.PlayerApi
 import com.example.knowmyplayer.repository.PlayerStatsRepository
-import com.example.knowmyplayer.repository.PlayerStatsRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -33,6 +32,6 @@ object AppModule {
     @Provides
     @Singleton
     fun providesPlayerRepository(playerApi: PlayerApi): PlayerStatsRepository {
-        return PlayerStatsRepositoryImpl(playerApi)
+        return PlayerStatsRepository(playerApi)
     }
 }

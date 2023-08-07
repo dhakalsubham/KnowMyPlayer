@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "632063913434",
+    "project_id": "knowmyplayer-48f8b",
+    "storage_bucket": "knowmyplayer-48f8b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:632063913434:android:2181e4e24a4a224828a4e3",
+        "android_client_info": {
+          "package_name": "com.example.knowmyplayer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "632063913434-gulkc2mpn23p2affe35m81bs9i2ncl73.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRLwl5qXULdHlDYz0Xf0W9IwfRt3_fkMg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "632063913434-gulkc2mpn23p2affe35m81bs9i2ncl73.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

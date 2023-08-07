@@ -1,4 +1,4 @@
-package com.example.knowmyplayer
+package com.example.knowmyplayer.feature.dashboard
 
 import com.example.knowmyplayer.model.Player
 

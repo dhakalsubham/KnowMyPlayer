@@ -4,7 +4,6 @@
         <attr name="label" format="string" />
         <attr name="value" format="string" />
         <attr name="gravity" format="integer" />
-
     </declare-styleable>
 
 </resources>

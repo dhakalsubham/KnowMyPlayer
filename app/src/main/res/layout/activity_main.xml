@@ -13,17 +13,32 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:background="@drawable/bg_rounded_rectangle"
+        android:iconifiedByDefault="false"
         android:queryHint="@string/enter_player_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:iconifiedByDefault="false"/>
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_view_empty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="@string/enter_player_name_to_search"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </TextView>
 
     <RelativeLayout
         android:id="@+id/relative_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@id/search_view_search_player"
         app:layout_constraintStart_toStartOf="@id/search_view_search_player"
         app:layout_constraintTop_toBottomOf="@id/search_view_search_player">
@@ -35,14 +50,14 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentRight="true"
             android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
-            android:alpha="0.6" />
+            android:alpha="0.6"
+            android:scaleType="centerCrop" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:layout_marginLeft="32dp">
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="100dp">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/image_view_avatar"
@@ -90,6 +105,7 @@
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@id/search_view_search_player"
         app:layout_constraintStart_toStartOf="@id/search_view_search_player"
         app:layout_constraintTop_toBottomOf="@id/relative_layout"
@@ -101,10 +117,11 @@
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/search_view_search_player"
         app:layout_constraintStart_toStartOf="@id/search_view_search_player"
-        app:layout_constraintTop_toBottomOf="@id/tabLayout"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/tabLayout" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

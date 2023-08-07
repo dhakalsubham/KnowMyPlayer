@@ -1,32 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:background="@color/black"
+    android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="fill_parent"
-        android:layout_height="250dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:scaleType="fitXY" />
+    <SearchView
+        android:id="@+id/search_view_search_player"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@drawable/bg_rounded_rectangle"
+        android:queryHint="@string/enter_player_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:iconifiedByDefault="false"/>
 
-    <TextView
-        android:id="@+id/textview"
-        android:textColor="@color/white"
+    <RelativeLayout
+        android:id="@+id/relative_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="@id/search_view_search_player"
+        app:layout_constraintStart_toStartOf="@id/search_view_search_player"
+        app:layout_constraintTop_toBottomOf="@id/search_view_search_player">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:src="@drawable/androidparty"
-        android:layout_width="60dp"
-        android:layout_height="60dp"/>
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="fill_parent"
+            android:layout_height="300dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:alpha="0.6" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:layout_marginLeft="32dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/image_view_avatar"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="32dp"
+                app:civ_circle_background_color="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/text_view_player_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/image_view_avatar" />
+
+            <TextView
+                android:id="@+id/text_view_player_country"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="32dp"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toEndOf="@+id/text_view_player_sport"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_player_name"
+                tools:text="England" />
+
+            <TextView
+                android:id="@+id/text_view_player_sport"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="@+id/text_view_player_name"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_player_name"
+                tools:text="Soccer" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </RelativeLayout>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/search_view_search_player"
+        app:layout_constraintStart_toStartOf="@id/search_view_search_player"
+        app:layout_constraintTop_toBottomOf="@id/relative_layout"
+        app:tabBackground="@color/black"
+        app:tabGravity="fill"
+        app:tabMode="fixed" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="@id/search_view_search_player"
+        app:layout_constraintStart_toStartOf="@id/search_view_search_player"
+        app:layout_constraintTop_toBottomOf="@id/tabLayout"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

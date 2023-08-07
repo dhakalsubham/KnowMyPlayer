@@ -27,15 +27,21 @@ class MainActivityViewModel
     init {
         viewModelScope.launch {
             try {
-                getPlayerStatsByName("Messi")
+                getPlayerStatsByName("LeBron James")
             } catch (e: Exception) {
                 e.printStackTrace()
             }
         }
-
     }
 
     suspend fun getPlayerStatsByName(name: String) {
-        var response = repository.getPlayerStatsByName(name)
+        viewModelScope.launch {
+            var res = repository.getPlayerStatsByName(name)
+            if (res.player.isNotEmpty()) {
+                playerStats.postValue(res.player[0])
+            }
+
+        }
+
     }
 }

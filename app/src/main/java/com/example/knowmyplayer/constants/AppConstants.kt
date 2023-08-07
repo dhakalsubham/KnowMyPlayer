@@ -8,4 +8,5 @@ package com.example.knowmyplayer.constants
 object AppConstants {
     var base_url = "https://www.thesportsdb.com/api/v1/json/3/"
     var api_key = "50130162"
+    var dateFormat = "yyyy-MM-dd"
 }

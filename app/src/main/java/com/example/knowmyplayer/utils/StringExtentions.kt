@@ -21,3 +21,8 @@ fun String.convertDOBToAge(): String {
     val age = Period.between(dateOfBirth, currentDate)
     return "${age.years} years"
 }
+fun String.extractValueInsideParentheses(): String? {
+    val regex = Regex("\\((.*?)\\)") // Regular expression to match content inside parentheses
+    val matchResult = regex.find(this)
+    return matchResult?.groupValues?.getOrNull(1)
+}

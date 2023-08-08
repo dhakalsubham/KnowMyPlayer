@@ -11,6 +11,7 @@ import com.example.knowmyplayer.R
 import com.example.knowmyplayer.databinding.FragmentProfileBinding
 import com.example.knowmyplayer.remote.NetworkUtils
 import com.example.knowmyplayer.utils.convertDOBToAge
+import com.example.knowmyplayer.utils.extractValueInsideParentheses
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
 
@@ -41,7 +42,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                         } else {
                             with(playerResponse.player[0]) {
                                 binding.labelAndFieldPosition.setValue(strPosition)
-                                binding.labelAndFieldHeight.setValue(strHeight)
+                                binding.labelAndFieldHeight.setValue(strHeight.extractValueInsideParentheses())
                                 binding.labelAndFieldWeight.setValue(strWeight)
                                 binding.labelAndFieldAge.setValue(dateBorn.convertDOBToAge())
                                 binding.labelAndFieldTeam.setValue(strTeam)

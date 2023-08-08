@@ -32,7 +32,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         firebaseAnalytics = Firebase.analytics
+        setUpUI()
+        setUpObserver()
+    }
 
+    private fun setUpUI() {
         val fragmentList = arrayListOf(
             ProfileFragment(),
             InfoFragment()
@@ -64,7 +68,9 @@ class MainActivity : AppCompatActivity() {
                 return true
             }
         })
+    }
 
+    private fun setUpObserver() {
         viewModel.playerStats.observe(this) {
             when (it) {
                 is NetworkUtils.Error -> {
@@ -76,12 +82,12 @@ class MainActivity : AppCompatActivity() {
                     firebaseAnalytics.logEvent("player_name_response") {
                         param("successful", "false")
                     }
-
                 }
 
                 is NetworkUtils.Loading -> {
                     binding.relativeLayout.visibility = View.GONE
                     binding.textViewEmpty.visibility = View.VISIBLE
+                    binding.textViewEmpty.text = this.getString(R.string.loading_player_information)
                     binding.viewpager.visibility = View.GONE
                     binding.tabLayout.visibility = View.GONE
                 }
@@ -95,7 +101,7 @@ class MainActivity : AppCompatActivity() {
                         if (playerResponse.player.isNullOrEmpty()) {
                             binding.relativeLayout.visibility = View.GONE
                             binding.textViewEmpty.visibility = View.VISIBLE
-                            binding.textViewEmpty.text = "Invalid Player Name"
+                            binding.textViewEmpty.text = this.getString(R.string.invalid_player_name)
                             binding.viewpager.visibility = View.GONE
                             binding.tabLayout.visibility = View.GONE
                             firebaseAnalytics.logEvent("player_name_response") {

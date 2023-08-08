@@ -23,6 +23,12 @@ class MainActivityViewModel
     private val _playerStats = MutableLiveData<NetworkUtils<PlayerResponse>>()
     val playerStats: LiveData<NetworkUtils<PlayerResponse>> = _playerStats
 
+    init {
+        viewModelScope.launch {
+            getPlayerStatsByName("Harry Kane") // player information for at startup
+        }
+    }
+
     suspend fun getPlayerStatsByName(name: String) {
         viewModelScope.launch {
             _playerStats.postValue(NetworkUtils.Loading())

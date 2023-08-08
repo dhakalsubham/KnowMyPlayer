@@ -17,5 +17,7 @@
     <string name="wage">Wage</string>
     <string name="kit">Kit</string>
     <string name="enter_player_name_to_search">Please enter your player name above. </string>
+    <string name="invalid_player_name">Invalid Player Name</string>
+    <string name="loading_player_information">Loading Player Information...</string>
 
 </resources>

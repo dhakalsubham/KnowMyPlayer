@@ -15,7 +15,6 @@ import com.example.knowmyplayer.databinding.KLabelAndValueFieldBinding
  */
 class KLabelAndValueField : LinearLayout {
     private lateinit var binding: KLabelAndValueFieldBinding
-    private var label = ""
     private var value = ""
 
 

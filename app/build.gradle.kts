@@ -6,6 +6,7 @@ plugins {
     id("com.google.gms.google-services")
 }
 
+
 android {
     namespace = "com.example.knowmyplayer"
     compileSdk = 33
@@ -77,4 +78,8 @@ dependencies {
     //firebase
     implementation(platform("com.google.firebase:firebase-bom:32.2.2"))
     implementation("com.google.firebase:firebase-analytics-ktx")
+
+    //admob
+    implementation("com.google.android.gms:play-services-ads:22.2.0")
+
 }

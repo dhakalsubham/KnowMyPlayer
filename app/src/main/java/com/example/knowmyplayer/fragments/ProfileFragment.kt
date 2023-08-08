@@ -11,6 +11,8 @@ import com.example.knowmyplayer.R
 import com.example.knowmyplayer.databinding.FragmentProfileBinding
 import com.example.knowmyplayer.remote.NetworkUtils
 import com.example.knowmyplayer.utils.convertDOBToAge
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
 
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
@@ -21,6 +23,9 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentProfileBinding.bind(view)
+        MobileAds.initialize(requireContext())
+        val adRequest = AdRequest.Builder().build()
+        binding.adView.loadAd(adRequest)
         viewModel.playerStats.observe(viewLifecycleOwner) {
 
             when (it) {
@@ -52,8 +57,5 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 }
             }
         }
-
     }
-
-
 }

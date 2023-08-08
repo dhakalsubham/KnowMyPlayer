@@ -11,3 +11,4 @@ Android app that displays player information. <br>
 - Fragments
 - Extention functions
 - Network Error Handling
+- Coil

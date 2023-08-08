@@ -1,5 +1,5 @@
 # KnowMyPlayer
-Android app to get the player information from sportsdb API <br>
+Android app that displays player information. <br>
 ## Implements:
 - MVVM
 - Retrofit
